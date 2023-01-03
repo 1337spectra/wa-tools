@@ -327,17 +327,7 @@
                 }),
                 t;
               },              
-            gsetTitle: function (t) {
-                var e = this.getTitleElement();
-                if (t) {
-                  // Use DOMPurify to sanitize the input
-                  t = DOMPurify.sanitize(t);
-                  ("rtl" !== this.options.direction || e.hasClass(r) || e.addClass(r), e.html(t))
-                } else {
-                  e.remove();
-                }
-              },              
-              setContent: function () {
+            ggetContent: function () {
                 if (this.getUrl()) {
                   switch (this.options.type) {
                     case "iframe":
@@ -345,9 +335,8 @@
                       break;
                     case "html":
                       try {
-                        // Use DOMPurify to sanitize the HTML content
-                        var html = DOMPurify.sanitize(i(this.getUrl()));
                         // Use textContent to automatically escape any special characters
+                        var html = i(this.getUrl());
                         this.content.textContent = html;
                         this.content.is(":visible") || this.content.show();
                       } catch (e) {
@@ -358,7 +347,9 @@
                 } else if (!this.content) {
                   var t = "";
                   if (
-                    ((t = i.isFunction(this.options.content) ? this.options.content.apply(this.$element[0], [this]) : this.options.content),
+                    ((t = i.isFunction(this.options.content)
+                      ? this.options.content.apply(this.$element[0], [this])
+                      : this.options.content),
                     (this.content = this.$element.attr("data-content") || t),
                     !this.content)
                   ) {
