@@ -120,7 +120,7 @@ function convertToBBCode() {
   document.getElementById('bbcode-output').value = bbcode;
 }
 
-function copyToClipboard(event) {
+/*function copyToClipboard(event) {
   // Get the textarea element with the id specified by the data-target attribute
   var textareaId = event.target.getAttribute('data-target');
   var textarea = document.getElementById(textareaId);
@@ -136,4 +136,4 @@ function copyToClipboard(event) {
   setTimeout(function () {
     button.textContent = 'Copy';
   }, 3000);
-}
+}*/
