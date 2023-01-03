@@ -317,41 +317,47 @@
                 return this.options.hideEmpty && "html" === this.options.type;
             },
             getIframe: function () {
-                // Use textContent to automatically escape any special characters
                 var src = this.getUrl(),
+                    // Use DOMPurify to sanitize the src parameter
+                    src = DOMPurify.sanitize(src),
                     iframe = i("<iframe></iframe>").attr("src", src),
                     e = this;
                 return i.each(this._defaults.iframeOptions, function (i) {
-                        void 0 !== e.options.iframeOptions[i] && t.attr(i, e.options.iframeOptions[i]);
-                    }),
-                    t;
-            },
-            getContent: function () {
-                if (this.getUrl())
-                    switch (this.options.type) {
-                        case "iframe":
-                            this.content = this.getIframe();
-                            break;
-                            case "html":
-                                try {
-                                    // Use textContent to automatically escape any special characters
-                                    var html = i(this.getUrl());
-                                    this.content.textContent = html;
-                                    this.content.is(":visible") || this.content.show();
-                                } catch (e) {
-                                    console.error(e);
-                                }
-                                break;
-                    }
-                else if (!this.content) {
-                    var t = "";
-                    if (((t = i.isFunction(this.options.content) ? this.options.content.apply(this.$element[0], [this]) : this.options.content), (this.content = this.$element.attr("data-content") || t), !this.content)) {
-                        var e = this.$element.next();
-                        e && e.hasClass(n + "-content") && (this.content = e);
-                    }
+                  void 0 !== e.options.iframeOptions[i] && t.attr(i, e.options.iframeOptions[i]);
+                }),
+                t;
+              },              
+            gsetContent: function () {
+                if (this.getUrl()) {
+                  switch (this.options.type) {
+                    case "iframe":
+                      this.content = this.getIframe();
+                      break;
+                    case "html":
+                      try {
+                        // Use DOMPurify to sanitize the HTML content
+                        var html = DOMPurify.sanitize(i(this.getUrl()));
+                        // Use textContent to automatically escape any special characters
+                        this.content.textContent = html;
+                        this.content.is(":visible") || this.content.show();
+                      } catch (e) {
+                        console.error(e);
+                      }
+                      break;
+                  }
+                } else if (!this.content) {
+                  var t = "";
+                  if (
+                    ((t = i.isFunction(this.options.content) ? this.options.content.apply(this.$element[0], [this]) : this.options.content),
+                    (this.content = this.$element.attr("data-content") || t),
+                    !this.content)
+                  ) {
+                    var e = this.$element.next();
+                    e && e.hasClass(n + "-content") && (this.content = e);
+                  }
                 }
                 return this.content;
-            },
+              },              
             setContent: function (t) {
                 var e = this.getTarget(),
                     o = this.getContentElement();
