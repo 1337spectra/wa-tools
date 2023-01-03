@@ -327,7 +327,17 @@
                 }),
                 t;
               },              
-            gsetContent: function () {
+            gsetTitle: function (t) {
+                var e = this.getTitleElement();
+                if (t) {
+                  // Use DOMPurify to sanitize the input
+                  t = DOMPurify.sanitize(t);
+                  ("rtl" !== this.options.direction || e.hasClass(r) || e.addClass(r), e.html(t))
+                } else {
+                  e.remove();
+                }
+              },              
+              setContent: function () {
                 if (this.getUrl()) {
                   switch (this.options.type) {
                     case "iframe":
