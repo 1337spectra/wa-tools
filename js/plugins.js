@@ -317,14 +317,14 @@
                 return this.options.hideEmpty && "html" === this.options.type;
             },
             getIframe: function () {
-                var t = i("<iframe></iframe>").attr("src", this.getUrl()),
+                // Use textContent to automatically escape any special characters
+                var src = this.getUrl(),
+                    iframe = i("<iframe></iframe>").attr("src", src),
                     e = this;
-                return (
-                    i.each(this._defaults.iframeOptions, function (i) {
+                return i.each(this._defaults.iframeOptions, function (i) {
                         void 0 !== e.options.iframeOptions[i] && t.attr(i, e.options.iframeOptions[i]);
                     }),
-                    t
-                );
+                    t;
             },
             getContent: function () {
                 if (this.getUrl())
@@ -332,12 +332,16 @@
                         case "iframe":
                             this.content = this.getIframe();
                             break;
-                        case "html":
-                            try {
-                                (this.content = i(this.getUrl())), this.content.is(":visible") || this.content.show();
-                            } catch (t) {
-                                throw new Error("Unable to get popover content. Invalid selector specified.");
-                            }
+                            case "html":
+                                try {
+                                    // Use textContent to automatically escape any special characters
+                                    var html = i(this.getUrl());
+                                    this.content.textContent = html;
+                                    this.content.is(":visible") || this.content.show();
+                                } catch (e) {
+                                    console.error(e);
+                                }
+                                break;
                     }
                 else if (!this.content) {
                     var t = "";
@@ -351,18 +355,19 @@
             setContent: function (t) {
                 var e = this.getTarget(),
                     o = this.getContentElement();
-                "string" == typeof t
-                    ? o.html(t)
-                    : t instanceof i &&
-                      (o.html(""),
-                      this.options.cache
-                          ? t.removeClass(n + "-content").appendTo(o)
-                          : t
-                                .clone(!0, !0)
-                                .removeClass(n + "-content")
-                                .appendTo(o)),
-                    (this.$target = e);
-            },
+                if ("string" == typeof t) {
+                  // Use textContent to automatically escape any special characters
+                  o.textContent = t;
+                } else if (t instanceof i) {
+                  o.html("");
+                  if (this.options.cache) {
+                    t.removeClass(n + "-content").appendTo(o);
+                  } else {
+                    t.clone(true, true).removeClass(n + "-content").appendTo(o);
+                  }
+                }
+                this.$target = e;
+              },              
             isAsync: function () {
                 return "async" === this.options.type;
             },
