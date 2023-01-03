@@ -45,6 +45,8 @@
 	<link rel="stylesheet" href="css/jquery.webui-popover.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="css/jquery.fancybox.min.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
 			
 	<!-- Favicons
 	================================================== -->
@@ -228,7 +230,8 @@
 									<br>
 									<!-- Copy button -->
 									<!--<button id="copy-button" onclick="copyToClipboard()" class="btn btn-pass-1">Copy</button>-->
-									<button id="copy-button-1" onclick="copyToClipboard(event)" class="btn btn-pass-1" data-target="bbcode-output">Copy</button>
+									<!--<button id="copy-button-1" onclick="copyToClipboard(event)" class="btn btn-pass-1" data-target="bbcode-output">Copy</button>-->
+									<button id="copy-button-1" class="btn btn-pass-1" data-clipboard-target="#bbcode-output">Copy</button>
 								</div>
 							</div>
 							<!-- Page end -->
@@ -259,7 +262,8 @@
 									<!--<div id="copy-button-container" class="my-3">
 										<button id="copy-button" class="btn btn-pass-1">Copy</button>
 									</div>-->
-									<button id="copy-button-2" onclick="copyToClipboard(event)" class="btn btn-pass-2" data-target="output">Copy</button>
+									<!--<button id="copy-button-2" onclick="copyToClipboard(event)" class="btn btn-pass-2" data-target="output">Copy</button>-->
+									<button id="copy-button-2" class="btn btn-pass-2" data-clipboard-target="#output">Copy</button>
 								</div>
 							</div>
 						</div>
@@ -696,6 +700,18 @@
 	<script src="js/custom.js"></script>
 	<script src="js/converter.js"></script>
 	<script src="js/noparser.js"></script>
+	<script>
+		var copyButtons = document.querySelectorAll('[data-clipboard-target]');
+        var clipboard = new ClipboardJS(copyButtons);
+        
+        clipboard.on('success', function(event) {
+            event.clearSelection();
+            event.trigger.textContent = 'Copied!';
+            setTimeout(function () {
+              event.trigger.textContent = 'Copy';
+            }, 2000);
+        });
+	</script>
 <!-- End Document
 ================================================== -->
 </body>
