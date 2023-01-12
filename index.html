@@ -105,8 +105,8 @@
 				<nav class="menu">
 					<a href="#" class="menu__item">bbcode<div class="empty-space">-</div>converter</a>
 					<a href="#" class="menu__item">noparse<div class="empty-space">-</div>&amp;<div class="empty-space">-</div>wrapper</a>
-					<!--<a href="#" class="menu__item">gallery<div class="empty-space">-</div>&amp;<div class="empty-space">-</div>sponsors</a>
-					<a href="#" class="menu__item">latest<div class="empty-space">-</div>press</a>
+					<a href="#" class="menu__item">JSON<div class="empty-space">-</div>converter</a>
+					<!--<a href="#" class="menu__item">latest<div class="empty-space">-</div>press</a>
 					<a href="#" class="menu__item">stay<div class="empty-space">-</div>informed</a>-->
 				</nav>
 				<div class="event-time">
@@ -207,7 +207,6 @@
 			
 			<!-- Primary Page Layout
 			================================================== -->
-	
 			<div class="content content--reveal">
 				<div class="content__inner">
 					<div class="section full-height over-y-scroll" id="boxscroll-1">
@@ -228,9 +227,6 @@
 									<p class="h5 text-center">WA BBCode Output:</p>
 									<textarea id="bbcode-output" class="form-control my-5" placeholder="BBCode Will Generate Here"></textarea>
 									<br>
-									<!-- Copy button -->
-									<!--<button id="copy-button" onclick="copyToClipboard()" class="btn btn-pass-1">Copy</button>-->
-									<!--<button id="copy-button-1" onclick="copyToClipboard(event)" class="btn btn-pass-1" data-target="bbcode-output">Copy</button>-->
 									<button id="copy-button-1" class="btn btn-pass-1" data-clipboard-target="#bbcode-output">Copy</button>
 								</div>
 							</div>
@@ -256,14 +252,9 @@
 								<br />
 								<div class="pass-wrap">
 									<p class="h5 text-center">Wrapped BBCode:</p>
-									<textarea id="output" class="form-control my-5" placeholder="[noparse] BBCode Will Output Here"></textarea>
+									<textarea id="noparse-output" class="form-control my-5" placeholder="[noparse] BBCode Will Output Here"></textarea>
 									<br />
-									<!-- Copy button -->
-									<!--<div id="copy-button-container" class="my-3">
-										<button id="copy-button" class="btn btn-pass-1">Copy</button>
-									</div>-->
-									<!--<button id="copy-button-2" onclick="copyToClipboard(event)" class="btn btn-pass-2" data-target="output">Copy</button>-->
-									<button id="copy-button-2" class="btn btn-pass-2" data-clipboard-target="#output">Copy</button>
+									<button id="copy-button-2" class="btn btn-pass-2" data-clipboard-target="#noparse-output">Copy</button>
 								</div>
 							</div>
 						</div>
@@ -271,167 +262,25 @@
 					</div>
 				</div>
 				<div class="content__inner">
-					<div class="section full-height over-y-scroll" id="boxscroll-3">
-						<div class="section" id="boxscroll-in-3">
+					<div class="section full-height over-y-scroll" id="boxscroll-1">
+						<div class="section" id="boxscroll-in-1">
 							<!-- Page start -->
-							<div class="section padding-top-big">
-								<div class="container">
-									<div class="row">
-										<div class="col-md-12">
-											<h2 class="content__title">gallery &amp; sponsors</h2>
-										</div>
-										<div class="col-lg-4 mt-3">
-											<h3 class="content__subtitle">The rapid handle injects into the bashful lift.</h3>
-										</div>
-									</div>
+							<div class="container my-5">
+								<!-- Section: Components -->
+								<div class="pass-wrap">
+									<h4 class="text-center">JSON Wrapper / Converter</h4>
+									<br>
+									<p class="text-center">Enter your list of names, one per line, to generate the JSON used for WA's name generators.</p>
+									<textarea id="nameInput" class="form-control my-5" placeholder="Enter names here"></textarea>
+									<br>
+									<button id="generateCode" class="btn btn-pass-2">Convert</button>
 								</div>
-							</div>
-							<div class="section padding-top-bottom">
-								<div class="container">
-									<div class="row">									
-										<div class="col-sm-6 col-md-4">	
-											<a href="img/gallery/1.jpg" data-fancybox="gallery">							
-												<div class="img-wrap gallery">
-													<img src="img/gallery/1.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4 mt-sm-0">
-											<a href="img/gallery/2.jpg" data-fancybox="gallery">								
-												<div class="img-wrap gallery">
-													<img src="img/gallery/2.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4 mt-md-0">
-											<a href="img/gallery/3.jpg" data-fancybox="gallery">									
-												<div class="img-wrap gallery">
-													<img src="img/gallery/3.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/4.jpg" data-fancybox="gallery">							
-												<div class="img-wrap gallery">
-													<img src="img/gallery/4.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/5.jpg" data-fancybox="gallery">								
-												<div class="img-wrap gallery">
-													<img src="img/gallery/5.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/6.jpg" data-fancybox="gallery">								
-												<div class="img-wrap gallery">
-													<img src="img/gallery/6.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/7.jpg" data-fancybox="gallery">							
-												<div class="img-wrap gallery">
-													<img src="img/gallery/7.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">
-											<a href="img/gallery/8.jpg" data-fancybox="gallery">									
-												<div class="img-wrap gallery">
-													<img src="img/gallery/8.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">
-											<a href="img/gallery/9.jpg" data-fancybox="gallery">									
-												<div class="img-wrap gallery">
-													<img src="img/gallery/9.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/10.jpg" data-fancybox="gallery">							
-												<div class="img-wrap gallery">
-													<img src="img/gallery/10.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/11.jpg" data-fancybox="gallery">								
-												<div class="img-wrap gallery">
-													<img src="img/gallery/11.jpg" alt="">
-												</div>
-											</a>
-										</div>									
-										<div class="col-sm-6 col-md-4 mt-4">	
-											<a href="img/gallery/12.jpg" data-fancybox="gallery">							
-												<div class="img-wrap gallery">
-													<img src="img/gallery/12.jpg" alt="">
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="section padding-bottom-big">
-								<div class="container">
-									<div class="row">			
-										<div class="offset-md-3 col-md-9">
-											<h4>shaping the future</h4>
-											<div class="title-page-line mt-4 mb-5"></div>
-										</div>									
-										<div class="col-lg-3">
-											<h6>strategic partners</h6>
-										</div>
-										<div class="col-lg-9 mt-4 mt-lg-0">
-											<div class="sponsors">
-												<img src="img/logos/white1.png" alt="">
-												<img src="img/logos/white2.png" alt="">
-												<img class="mt-3 mt-md-0" src="img/logos/white3.png" alt="">
-												<img class="mt-3 mt-md-0" src="img/logos/white4.png" alt="">
-											</div>
-										</div>									
-										<div class="col-lg-3 mt-5">
-											<h6>project partners</h6>
-										</div>
-										<div class="col-lg-9 mt-4 mt-lg-5">
-											<div class="sponsors">
-												<img src="img/logos/white5.png" alt="">
-												<img src="img/logos/white6.png" alt="">
-												<img class="mt-3 mt-md-0" src="img/logos/white7.png" alt="">
-												<img class="mt-3 mt-md-0" src="img/logos/white8.png" alt="">
-												<img class="mt-3" src="img/logos/white9.png" alt="">
-												<img class="mt-3" src="img/logos/white10.png" alt="">
-												<img class="mt-3" src="img/logos/white11.png" alt="">
-												<img class="mt-3" src="img/logos/white1.png" alt="">
-												<img class="mt-3" src="img/logos/white2.png" alt="">
-												<img class="mt-3" src="img/logos/white3.png" alt="">
-												<img class="mt-3" src="img/logos/white4.png" alt="">
-												<img class="mt-3" src="img/logos/white6.png" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>					
-							<div class="section padding-top padding-bottom-big background-dark footer">
-								<div class="container">
-									<div class="row">
-										<div class="col-md-12">
-											<img src="img/logo.png" alt="">
-											<h6 class="mt-5 mb-3">Get in touch:</h6>
-											<p>office@aoide.com</p>
-											<p>+1 325 2532</p>
-										</div>
-										<div class="col-md-12 mt-5 mb-5">
-											<div class="title-page-line"></div>
-										</div>
-										<div class="col-md-12">
-											<p><small>© 2019 Aoide is powered by IG Design. The property of their owners.</small></p>
-										</div>
-									</div>
+								<br><br>
+								<div class="pass-wrap">
+									<p class="h5 text-center">JSON Output:</p>
+									<textarea id="jason-output" class="form-control my-5" placeholder="JSON Will Generate Here"></textarea>
+									<br>
+									<button id="copy-button-3" class="btn btn-pass-1" data-clipboard-target="#jason-output">Copy</button>
 								</div>
 							</div>
 							<!-- Page end -->
@@ -488,7 +337,7 @@
 											<div class="blog-wrap pb-4">
 												<a href="#"><img src="img/blog/4.jpg" alt=""></a>
 												<p class="px-4 pt-4 mb-1"><small>by Sandra Furius</small></p>
-												<a href="#"><h6 class="px-4 mb-3">Don´t give up, keep on focus all the time.</h6></a>
+												<a href="#"><h6 class="px-4 mb-3">Don't give up, keep on focus all the time.</h6></a>
 												<p class="px-4">Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor.</p>
 												<a href="#"><div class="go-post pl-4 pt-4"><i class="fa fa-long-arrow-right"></i></div></a>
 											</div>
@@ -645,7 +494,7 @@
 												<button data-lang="en"><span class="fa-long-arrow-right"></span></button>
 											</div>
 											<div class="subscribe-text">
-												<p>* we promise that we won´t spam you, never.</p>
+												<p>* we promise that we won't spam you, never.</p>
 											</div>
 										</div>
 									</div>
@@ -700,6 +549,7 @@
 	<script src="js/custom.js"></script>
 	<script src="js/converter.js"></script>
 	<script src="js/noparser.js"></script>
+	<script src="js/jasonWrap.js"></script>
 	<script>
 		var copyButtons = document.querySelectorAll('[data-clipboard-target]');
         var clipboard = new ClipboardJS(copyButtons);
