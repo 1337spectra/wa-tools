@@ -1,6 +1,6 @@
 let processButton = document.getElementById("process-button");
 let copyButton = document.getElementById("copy-button");
-let outputTextarea = document.getElementById("output");
+let outputTextarea = document.getElementById("noparse-output");
 
 // Add an event listener to the process button
 processButton.addEventListener("click", function () {
@@ -30,20 +30,3 @@ processButton.addEventListener("click", function () {
   // Set the value of the output textarea to the processed BBCode
   outputTextarea.value = result;
 });
-
-// Add an event listener to the copy button
-/*copyButton.addEventListener("click", function () {
-  // Select the contents of the output textarea
-  outputTextarea.select();
-
-  // Copy the selected text to the clipboard
-  document.execCommand("copy");
-
-  // Change the text of the copy button to "Copied!"
-  copyButton.textContent = "Copied!";
-
-  // Change the text of the copy button back to "Copy Output" after 3 seconds
-  setTimeout(function () {
-    copyButton.textContent = "Copy";
-  }, 3000);
-});*/
