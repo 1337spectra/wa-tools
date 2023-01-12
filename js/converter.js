@@ -115,25 +115,8 @@ function convertToBBCode() {
     .replace(/>/g, ']')
     .replace(/</g, '[')
     .replace(/<span style="color:/g, '[color:')
+    .replace(/<a href="(.*?)">(.*?)<\/a>/g, (match, url, text) => "[url:" + url + "]" + text + "[/url]")
    
   // Set the BBCode output
   document.getElementById('bbcode-output').value = bbcode;
 }
-
-/*function copyToClipboard(event) {
-  // Get the textarea element with the id specified by the data-target attribute
-  var textareaId = event.target.getAttribute('data-target');
-  var textarea = document.getElementById(textareaId);
-
-  // Select the text in the textarea
-  textarea.select();
-  // Copy the selected text to the clipboard
-  document.execCommand('copy');
-  // Change the button text to 'Copied!'
-  var button = event.target;
-  button.textContent = 'Copied!';
-  // Reset the button text after 3 seconds
-  setTimeout(function () {
-    button.textContent = 'Copy';
-  }, 3000);
-}*/
