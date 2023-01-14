@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Basic Page Needs
+    ================================================== -->
+        <meta charset="utf-8" />
+        <title>World Anvil Tools</title>
+        <meta name="description" content="A collection of tools designed to make simple tasks just a little bit easier." />
+        <meta name="author" content="Gabrielle Decker" />
+
+        <!-- Mobile Specific Metas
+    ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- CSS
+    ================================================== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
         <link rel="stylesheet" href="css/mdb.dark.min.css" />
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Favicons
+    ================================================== -->
+        <link rel="icon" type="image/png" href="favicon.svg" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" integrity="sha384-Exdl7hU074DIu0FDUo/yWzxSmUwkPA3JUnxKitQvJKlrEJJON8FoNTh8xVJqwEBR" crossorigin="anonymous"></script>
-        <style>
-            body{padding-bottom:5-rem;overflow-y:auto}
-            .form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;-webkit-transition:all .2s linear;transition:all .2s linear;animation-name:onautofillcancel}
-            textarea{width:100%;height:150px;min-height:auto;box-sizing:border-box;margin:0;font-family:inherit;resize:vertical;display:block;width:100%;font-size:1rem;font-weight:400;line-height:1.6;appearance:none;animation-name:onautofillcancel}
-            .mark,mark{padding:.2em;background-color:rgb(0,0,0,.35)}
-            .btn-hover{padding:.5rem .75rem;min-width:100px;font-size:1rem;font-weight:400;color:#fff;cursor:pointer;margin:0;text-align:center;line-height:1.5;white-space:nowrap;border:none;background-size:300% 100%;border-radius:3px;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-webkit-transition:all .4s ease-in-out;transition:all .4s ease-in-out}
-            .btn-hover:hover{background-position:100% 0;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-webkit-transition:all .4s ease-in-out;transition:all .4s ease-in-out}
-            .btn-hover:focus{outline:0}
-            .btn-hover.color-1{background-image:linear-gradient(to right,#25aae1,#40e495,#30dd8a,#2bb673);box-shadow:0 4px 15px 0 rgba(49,196,190,.75)}
-            .btn-hover.color-2{background-image:linear-gradient(to right,#f5ce62,#e43603,#fa7199,#e85a19);box-shadow:0 4px 15px 0 rgba(229,66,10,.75)}
-            .btn-hover.color-3{background-image:linear-gradient(to right,#667eea,#764ba2,#6b8dd6,#8e37d7);box-shadow:0 4px 15px 0 rgba(116,79,168,.75)}
-            .btn-hover.color-4{background-image:linear-gradient(to right,#fc6076,#ff9a44,#ef9d43,#e75516);box-shadow:0 4px 15px 0 rgba(252,104,110,.75)}
-            .btn-hover.color-5{background-image:linear-gradient(to right,#0ba360,#3cba92,#30dd8a,#2bb673);box-shadow:0 4px 15px 0 rgba(23,168,108,.75)}
-            .btn-hover.color-6{background-image:linear-gradient(to right,#009245,#fcee21,#00a8c5,#d9e021);box-shadow:0 4px 15px 0 rgba(83,176,57,.75)}
-            .btn-hover.color-7{background-image:linear-gradient(to right,#6253e1,#852d91,#a3a1ff,#f24645);box-shadow:0 4px 15px 0 rgba(126,52,161,.75)}
-            .btn-hover.color-8{background-image:linear-gradient(to right,#29323c,#485563,#2b5876,#4e4376);box-shadow:0 4px 15px 0 rgba(45,54,65,.75)}
-            .btn-hover.color-9{background-image:linear-gradient(to right,#25aae1,#4481eb,#04befe,#3f86ed);box-shadow:0 4px 15px 0 rgba(65,132,234,.75)}
-            .btn-hover.color-10{background-image:linear-gradient(to right,#ed6ea0,#ec8c69,#f7186a,#fbb03b);box-shadow:0 4px 15px 0 rgba(236,116,149,.75)}
-            .btn-hover.color-11{background-image:linear-gradient(to right,#eb3941,#f15e64,#e14e53,#e2373f);box-shadow:0 5px 15px rgba(242,97,103,.4)}
-        </style>
     </head>
 
     <body>
@@ -76,7 +79,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">BBCode Converter</h5>
-                            <p class="card-text">Convert HTML to World Anvil BBCode. Still a WIP, but will convert most basic BBCode.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="bbcode-converter.html" class="btn btn-primary">Let's Go</a>
                         </div>
                     </div>
@@ -91,7 +94,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Noparse & Wrapper</h5>
-                            <p class="card-text">Wrap your BBCode with [noparse] for easy copy-pasting of components.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="noparse-wrapper.html" class="btn btn-primary">Yes Please</a>
                         </div>
                     </div>
@@ -106,7 +109,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">JSON Converter</h5>
-                            <p class="card-text">Convert a list of names to JSON format for use in World Anvil name generators.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="jason-wrapper.html" class="btn btn-primary">THIS!</a>
                         </div>
                     </div>
