@@ -106,6 +106,7 @@ function convertToBBCode() {
     .replace(/<span class="/g, '[section:')
     .replace(/<\/span>/g, '[/section]')
     .replace(new RegExp('<i class="(.*?)"></i>', 'g'), '[section:$1] [/section]')
+    .replace(/<img src="([^"]*)" style="width: (\d+)px; height: (\d+)px">/g, '[img:$1|center|$2]')
     .replace(/;">/g, ']')
     .replace(/class="/g, ':')
     .replace(/" \/>/g, ']')
