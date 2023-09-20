@@ -44,7 +44,7 @@ function convertToBBCode() {
       .replace(/<small>(.*?)<\/small>/gs, function (match, content){return `[small]${content}[/small]`})
       .replace(/<sup>(.*?)<\/sup>/gs, function (match, content){return `[sup]${content}[/sup]`})
       .replace(/<sub>(.*?)<\/sub>/gs, function (match, content){return `[sub]${content}[/sub]`})
-      .replace(/<pre>(.*?)<\/pre>/gs, function (match, content){return `[pre]${content}[/pre]`})
+      .replace(/<pre>(.*?)<\/pre>/gs, function (match, content){return `[noparse]${content}[/noparse]`})
       .replace(/<p style="text-align: left;">(.*?)<\/p>/gs, function (match, content){return `[left]${content}[/left]`;})
       .replace(/<p style="text-align: center;">(.*?)<\/p>/gs, function (match, content){return `[center]${content}[/center]`;})
       .replace(/<p style="text-align: right;">(.*?)<\/p>/gs, function (match, content){return `[right]${content}[/right]`;})
