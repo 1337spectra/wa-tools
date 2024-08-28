@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic Page Needs
+    ================================================== -->
+        <meta charset="utf-8" />
+        <title>World Anvil Tools</title>
+        <meta name="description" content="A collection of tools designed to make simple tasks just a little bit easier." />
+        <meta name="author" content="Gabrielle Decker" />
+
+        <!-- Mobile Specific Metas
+    ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- CSS
+    ================================================== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="css/mdb.dark.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Favicons
+    ================================================== -->
+        <link rel="icon" type="image/png" href="favicon.svg" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!-- Page start -->
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                        <img src="img/logo.svg" height="25" alt="Eivrall" loading="lazy" />
+                    </a>
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Tools</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.worldanvil.com/">World Anvil</a>
+                        </li>
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Content -->
+        <div class="container my-5">
+            <!-- Section: Components -->
+            <div class="pass-wrap">
+                <h4 class="text-center">JSONL Preparation</h4>
+                <br />
+                <p class="text-center">This is a simple interface to convert data into the <code>JSONL</code> format that OpenAI requires for fine-tuning.<br>
+                You can read more on their <a href="https://platform.openai.com/docs/guides/fine-tuning">official documentation</a>.</p>
+                <br />
+                <p class="text-center mark">Enter your text in the boxes below and click the "Convert" button to convert it to a JSONL entry.</p>
+                <br />
+                <!-- Text Boxes -->
+                <textarea id="system_message" class="form-control my-2" placeholder="System Message"></textarea>
+                <textarea id="user_message" class="form-control my-2" placeholder="User Message"></textarea>
+                <textarea id="assistant_message" class="form-control my-2" placeholder="Assistant Message"></textarea>
+                
+                <button onclick="convertToJSONL()" class="btn-hover color-3">Convert</button>
+            </div>
+            <br />
+            <div class="pass-wrap">
+                <p class="h5 text-center">JSONL Output:</p>
+                <textarea id="jsonl-output" class="form-control my-2" placeholder="JSONL Will Generate Here"></textarea>
+                <br />
+                <button id="copy-button-1" class="btn-hover color-6" data-clipboard-target="#jsonl-output">Copy</button>
+            </div>
+        </div>
+
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script>
+            function escapeJSON(str) {
+                return str
+                    .replace(/\\/g, '\\\\')
+                    .replace(/"/g, '\\"')
+                    .replace(/\n/g, '\\n')
+                    .replace(/\r/g, '\\r')
+                    .replace(/\t/g, '\\t')
+                    .replace(/\[/g, '(')
+                    .replace(/\]/g, ')')
+                    .replace(/"/g, "'");
+            }
+
+            function convertToJSONL() {
+                var systemMessage = document.getElementById('system_message').value;
+                var userMessage = document.getElementById('user_message').value;
+                var assistantMessage = document.getElementById('assistant_message').value;
+
+                var jsonl = `{"messages":[{"role":"system","content":"${escapeJSON(systemMessage)}"},{"role":"user","content":"${escapeJSON(userMessage)}"},{"role":"assistant","content":"${escapeJSON(assistantMessage)}"}]}`;
+                
+                document.getElementById('jsonl-output').value = jsonl;
+            }
+
+            var copyButtons = document.querySelectorAll("[data-clipboard-target]");
+            var clipboard = new ClipboardJS(copyButtons);
+
+            clipboard.on("success", function (event) {
+                event.clearSelection();
+                event.trigger.textContent = "Copied!";
+                setTimeout(function () {
+                    event.trigger.textContent = "Copy";
+                }, 2000);
+            });
+        </script>
+    </body>
+</html>
