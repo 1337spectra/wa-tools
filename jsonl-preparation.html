@@ -14,7 +14,7 @@
 
         <!-- CSS
     ================================================== -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
         <link rel="stylesheet" href="css/mdb.dark.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
         <link rel="stylesheet" href="css/style.css" />
@@ -26,7 +26,27 @@
         <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
         <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
+        <style>
+            .upload-area{border:2px dashed hsla(220, 24%, 85%, 0.123);padding:2rem;text-align:center;transition:all .3s ease;background:hsla(0, 0%, 46%, 0.1)}
+            .upload-area.dragover,.upload-area:hover{border-color:hsla(225, 15%, 69%, 0.25);background:hsla(0, 0%, 0%, 0.1);transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.1)}
+            .progress-bar{width:100%;height:8px;background-color:#e9ecef;overflow:hidden;margin:1rem 0}
+            .progress-fill{height:100%;background-color:var(--bs-primary);transition:width .3s ease}
+            .result-card{background:hsla(0, 0%, 0%, 0.1);border:1px solid hsla(220, 24%, 85%, 0.123);padding:1rem;margin:1rem 0;box-shadow:0 2px 4px rgba(0,0,0,.3);color:#e2e8f0}
+            .error-card{background:hsla(352, 86%, 22%);border:1px solid hsla(11, 100%, 50%);padding:1rem;margin:1rem 0;color:#fed7d7}
+            .success-card{background:rgba(var(--bs-success-rgb),.4);border:1px solid var(--bs-success);padding:1rem;margin:1rem 0;color:#fff}
+            .preview-item{background:hsla(0, 0%, 0%, 0.1);border:1px solid hsla(220, 24%, 85%, 0.123);border-radius:6px;padding:.75rem;margin:.5rem 0;font-size:.9rem;color:#e2e8f0}
+            .settings-panel{background:hsla(0, 0%, 0%, 0.1);border:1px solid hsla(220, 24%, 85%, 0.123);padding:1rem;margin:1rem 0;color:#e2e8f0}
+            .btn-upload{background:var(--bs-primary);color:#fff;border:none;padding:.5rem 1rem;cursor:pointer;transition:all .3s ease}
+            .btn-upload:hover{background:#0056b3;transform:translateY(-1px)}
+            .spinner{border:2px solid #f3f3f3;border-top:2px solid var(--bs-primary);border-radius:50%;width:20px;height:20px;animation:spin 1s linear infinite;margin:0 auto}
+            @keyframes spin{
+            0%{transform:rotate(0)}
+            100%{transform:rotate(360deg)}
+            }
+            .hidden{display:none}
+        </style>
     </head>
 
     <body>
@@ -60,68 +80,66 @@
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
+
         <!-- Content -->
         <div class="container my-5">
             <!-- Section: Components -->
             <div class="pass-wrap">
-                <h4 class="text-center">JSONL Preparation</h4>
+                <h4 class="text-center">ChatGPT to JSONL Converter</h4>
                 <br />
-                <p class="text-center">This is a simple interface to convert data into the <code>JSONL</code> format that OpenAI requires for fine-tuning.<br>
-                You can read more on their <a href="https://platform.openai.com/docs/guides/fine-tuning">official documentation</a>.</p>
+                <p class="text-center">Convert ChatGPT conversation JSON files to JSONL format for OpenAI fine-tuning.</p>
+                <p class="text-center mark">You can read more on their <a href="https://platform.openai.com/docs/guides/fine-tuning">official documentation</a>.</p>
                 <br />
-                <p class="text-center mark">Enter your text in the boxes below and click the "Convert" button to convert it to a JSONL entry.</p>
-                <br />
-                <!-- Text Boxes -->
-                <textarea id="system_message" class="form-control my-2" placeholder="System Message"></textarea>
-                <textarea id="user_message" class="form-control my-2" placeholder="User Message"></textarea>
-                <textarea id="assistant_message" class="form-control my-2" placeholder="Assistant Message"></textarea>
-                
-                <button onclick="convertToJSONL()" class="btn-hover color-3">Convert</button>
-            </div>
-            <br />
-            <div class="pass-wrap">
-                <p class="h5 text-center">JSONL Output:</p>
-                <textarea id="jsonl-output" class="form-control my-2" placeholder="JSONL Will Generate Here"></textarea>
-                <br />
-                <button id="copy-button-1" class="btn-hover color-6" data-clipboard-target="#jsonl-output">Copy</button>
+
+                <!-- Settings Panel -->
+                <div class="settings-panel">
+                    <h5><i class="fas fa-cog"></i> Settings</h5>
+                                         <div class="form-check">
+                         <input class="form-check-input" type="checkbox" id="includeSystem">
+                         <label class="form-check-label" for="includeSystem">
+                             Include system message in each training example
+                         </label>
+                     </div>
+                    <div id="systemMessageDiv" class="mt-2">
+                        <label for="systemMessage" class="form-label">System Message:</label>
+                        <input type="text" class="form-control" id="systemMessage" value="You are a helpful assistant.">
+                    </div>
+                </div>
+
+                <!-- File Upload Area -->
+                <div id="uploadArea" class="upload-area">
+                    <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                    <h5>Drop your ChatGPT JSON files here</h5>
+                    <p class="text-muted">Support for multiple files • or</p>
+                    <input type="file" id="fileInput" accept=".json" multiple class="hidden">
+                    <button class="btn-upload" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-file"></i> Choose Files
+                    </button>
+                </div>
+
+                <!-- Processing Status -->
+                <div id="processingStatus" class="hidden">
+                    <div class="text-center">
+                        <div class="spinner"></div>
+                        <p id="processingText" class="mt-2">Processing your file...</p>
+                        <p id="currentFile" class="text-muted small"></p>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <p id="progressText" class="text-muted small">0% complete</p>
+                    </div>
+                </div>
+
+                <!-- Error Display -->
+                <div id="errorContainer"></div>
+
+                <!-- Success and Results -->
+                <div id="resultsContainer"></div>
             </div>
         </div>
 
+        <script src="js/jsonl-prep.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/mdb.min.js"></script>
-        <script>
-            function escapeJSON(str) {
-                return str
-                    .replace(/\\/g, '\\\\')
-                    .replace(/"/g, '\\"')
-                    .replace(/\n/g, '\\n')
-                    .replace(/\r/g, '\\r')
-                    .replace(/\t/g, '\\t')
-                    .replace(/\[/g, '(')
-                    .replace(/\]/g, ')')
-                    .replace(/"/g, "'");
-            }
-
-            function convertToJSONL() {
-                var systemMessage = document.getElementById('system_message').value;
-                var userMessage = document.getElementById('user_message').value;
-                var assistantMessage = document.getElementById('assistant_message').value;
-
-                var jsonl = `{"messages":[{"role":"system","content":"${escapeJSON(systemMessage)}"},{"role":"user","content":"${escapeJSON(userMessage)}"},{"role":"assistant","content":"${escapeJSON(assistantMessage)}"}]}`;
-                
-                document.getElementById('jsonl-output').value = jsonl;
-            }
-
-            var copyButtons = document.querySelectorAll("[data-clipboard-target]");
-            var clipboard = new ClipboardJS(copyButtons);
-
-            clipboard.on("success", function (event) {
-                event.clearSelection();
-                event.trigger.textContent = "Copied!";
-                setTimeout(function () {
-                    event.trigger.textContent = "Copy";
-                }, 2000);
-            });
-        </script>
     </body>
 </html>

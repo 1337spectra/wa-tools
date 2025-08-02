@@ -14,7 +14,7 @@
 
         <!-- CSS
     ================================================== -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
         <link rel="stylesheet" href="css/mdb.dark.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
         <link rel="stylesheet" href="css/style.css" />
@@ -26,7 +26,7 @@
         <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
         <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" integrity="sha384-Exdl7hU074DIu0FDUo/yWzxSmUwkPA3JUnxKitQvJKlrEJJON8FoNTh8xVJqwEBR" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     </head>
 
     <body>
@@ -64,8 +64,14 @@
 
         <!-- Jumbotron -->
         <div class="p-5 text-center mb-5">
-            <h1 class="mb-3">World Anvil Tools</h1>
+            <h1 class="mb-3">Tools</h1>
             <p class="h4 mb-4">1337Spectra</p>
+        </div>
+        <!-- Jumbotron -->
+
+        <!-- Jumbotron -->
+        <div class="p-2 text-center">
+            <h2>General</h2>
         </div>
         <!-- Jumbotron -->
 
@@ -73,64 +79,72 @@
         <div class="container">
             <div class="row">
                 <div class="col-md">
-                    <div class="card mb-5">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="img/BBCode.jpg" class="img-fluid" alt="BBCode Converter" />
-                            <a href="bbcode-converter.html" title="BBCode Converter">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
+                <a href="jsonl-preparation.html" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">JSONL Preparation</h5>
+                            <p class="card-text">JSONL format for OpenAI fine-tuning.</p>
+                            <button type="button" class="btn btn-primary" href="jsonl-preparation.html">Go <i class="ms-1 fa-solid fa-arrow-right"></i></button>
                         </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-md">
+                <a href="time-date-converter.html" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">ISO-8601 Converter</h5>
+                            <p class="card-text">Convert time+date to ISO-8601.</p>
+                            <button type="button" class="btn btn-primary" href="time-date-converter.html">Go <i class="ms-1 fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+        <!-- Card Grid -->
+
+        <!-- Jumbotron -->
+        <div class="p-2 text-center">
+            <h2>World Anvil</h2>
+        </div>
+        <!-- Jumbotron -->
+
+        <!-- Card Grid -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                <a href="bbcode-converter.html" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">BBCode Converter</h5>
                             <p class="card-text">Convert HTML to World Anvil BBCode. WIP.</p>
-                            <a href="bbcode-converter.html" class="btn btn-primary">Let's Go</a>
+                            <button type="button" class="btn btn-primary" href="bbcode-converter.html">Go <i class="ms-1 fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
+                </a>
                 </div>
                 <div class="col-md">
-                    <div class="card mb-5">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="img/NoParser.jpg" class="img-fluid" alt="Noparse & Wrapper" />
-                            <a href="noparse-wrapper.html" title="Noparse & Wrapper">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+                <a href="noparse-wrapper.html" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Noparse & Wrapper</h5>
-                            <p class="card-text">Wrap your BBCode with [noparse] for easy copy-pasting.</p>
-                            <a href="noparse-wrapper.html" class="btn btn-primary">Yes Please</a>
+                            <p class="card-text">Wrap BBCode with [noparse] for copy-pasting.</p>
+                            <button type="button" class="btn btn-primary" href="noparse-wrapper.html">Go <i class="ms-1 fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
+                </a>
                 </div>
                 <div class="col-md">
-                    <div class="card mb-5">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="img/JSON.jpg" class="img-fluid" alt="JSON Converter" />
-                            <a href="jason-wrapper.html" title="JSON Converter">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+                <a href="jason-wrapper.html" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">JSON Converter</h5>
-                            <p class="card-text">Convert a list to JSON format for use in WA name generators.</p>
-                            <a href="jason-wrapper.html" class="btn btn-primary">THIS!</a>
+                            <p class="card-text">Convert list to JSON for WA name generators.</p>
+                            <button type="button" class="btn btn-primary" href="jason-wrapper.html">Go <i class="ms-1 fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md">
-                    <div class="card mb-5">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="img/OpenAIFineTuneDocs.png" class="img-fluid" alt="JSONL Preparation" />
-                            <a href="jsonl-preparation.html" title="JSONL Preparation">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">JSONL Preparation</h5>
-                            <p class="card-text">Format entries in JSONL format for use in OpenAI fine-tuning.</p>
-                            <a href="jsonl-preparation.html" class="btn btn-primary">AMEN</a>
-                        </div>
-                    </div>
+                </a>
                 </div>
             </div>
         </div>

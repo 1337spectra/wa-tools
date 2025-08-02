@@ -14,7 +14,7 @@
 
         <!-- CSS
     ================================================== -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
         <link rel="stylesheet" href="css/mdb.dark.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
         <link rel="stylesheet" href="css/style.css" />
@@ -26,7 +26,7 @@
         <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
         <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" integrity="sha384-Exdl7hU074DIu0FDUo/yWzxSmUwkPA3JUnxKitQvJKlrEJJON8FoNTh8xVJqwEBR" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     </head>
 
     <body>
@@ -60,6 +60,7 @@
             <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
+
         <!-- Content -->
         <div class="container my-5">
             <!-- Section: Components -->
@@ -75,17 +76,18 @@
                 <br />
                 <textarea id="bbcode" class="form-control my-2" placeholder="Enter BBCode Here"></textarea>
                 <br />
-                <button id="process-button" class="btn-hover color-2">Wrap</button>
+                <button id="process-button" type="button" class="btn btn-primary" data-mdb-ripple-init>Convert</button>
             </div>
             <br />
             <div class="pass-wrap">
                 <p class="h5 text-center">Wrapped BBCode:</p>
                 <textarea id="noparse-output" class="form-control my-2" placeholder="[noparse] BBCode Will Output Here"></textarea>
                 <br />
-                <button id="copy-button-2" class="btn-hover color-11" data-clipboard-target="#noparse-output">Copy</button>
+                <button id="copy-button-2" type="button" class="btn btn-primary" data-clipboard-target="#noparse-output" data-mdb-ripple-init><i class="fa-solid fa-copy"></i> Copy</button>
             </div>
         </div>
         <!-- Content -->
+
         <!-- Footer -->
         <!-- <footer class="text-center text-lg-start bg-dark text-muted">
             # Section: Social media

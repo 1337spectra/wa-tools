@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic Page Needs
+    ================================================== -->
+        <meta charset="utf-8" />
+        <title>World Anvil Tools</title>
+        <meta name="description" content="A collection of tools designed to make simple tasks just a little bit easier." />
+        <meta name="author" content="Gabrielle Decker" />
+
+        <!-- Mobile Specific Metas
+    ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- CSS
+    ================================================== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link rel="stylesheet" href="css/mdb.dark.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Favicons
+    ================================================== -->
+        <link rel="icon" type="image/png" href="favicon.svg" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.svg" />
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.svg" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    </head>
+
+    <body>
+        <!-- Page start -->
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                        <img src="img/logo.svg" height="25" alt="Eivrall" loading="lazy" />
+                    </a>
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Tools</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.worldanvil.com/">World Anvil</a>
+                        </li>
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Content -->
+        <div class="container my-5">
+            <!-- Section: Components -->
+            <div class="pass-wrap">
+                <h4 class="text-center">Time and Date Converter</h4>
+                <br />
+                <p class="text-center">Enter a date/time string in any format to convert it to ISO-8601.</p>
+                <br />
+                <textarea id="dateInput" class="form-control my-2" placeholder="Enter date/time string here"></textarea>
+                <br />
+                <button id="convert-btn" type="button" class="btn btn-primary" data-mdb-ripple-init>Convert</button>
+            </div>
+            <br />
+            <div class="pass-wrap">
+                <div class="row">
+                    <div class="col mx-auto small text-center">
+                        <p class="h5 small">Detected Input Format:</p>
+                        <p class="mark py-1 w-50 mx-auto">
+                            <code><output id="input-format"></output></code>
+                        </p>
+                    </div>
+                    <div class="col mx-auto small text-center">
+                        <p class="h5 small">Output Format Syntax:</p>
+                        <p class="mark py-1 w-50 mx-auto">
+                            <code><output id="output-format"></output></code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="pass-wrap">
+                <p class="h5 text-center">ISO-8601 Output:</p>
+                <textarea id="iso-output" class="form-control my-2" placeholder="ISO-8601 will generate here"></textarea>
+                <br />
+                <button type="button" id="copy-button-3" class="btn btn-primary" data-clipboard-target="#iso-output" data-mdb-ripple-init><i class="fa-solid fa-copy"></i> Copy</button>
+                <br />
+            </div>
+            <br />
+        </div>
+        <!-- Content -->
+        <!-- Page end -->
+
+        <script src="https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <script>
+            var copyButtons = document.querySelectorAll("[data-clipboard-target]");
+            var clipboard = new ClipboardJS(copyButtons);
+
+            clipboard.on("success", function (event) {
+                event.clearSelection();
+                event.trigger.textContent = "Copied!";
+                setTimeout(function () {
+                    event.trigger.textContent = "Copy";
+                }, 2000);
+            });
+        </script>
+        <script src="js/time-date-converter.js"></script>
+    </body>
+</html>
